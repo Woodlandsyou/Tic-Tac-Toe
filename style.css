@@ -1,0 +1,23 @@
+body {
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 97vw;
+    height: 97vh;
+}
+
+.div-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vmin;
+    height: 90vmin;
+}
+
+.cell {
+    box-sizing: border-box;
+    border: solid 0.5vmin black;
+    width: 29.7vmin;
+    height: 29.7vmin;
+    background-color: white;
+}
