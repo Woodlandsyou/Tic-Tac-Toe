@@ -13,13 +13,11 @@ body {
 }
 
 .cell {
-    fill: white;
-    stroke: black;
     width: 33%;
     height: 33%;
 }
 
-image {
-    width: 33%;
-    height: 33%;
+.rect {
+    fill: white;
+    stroke: black;
 }
