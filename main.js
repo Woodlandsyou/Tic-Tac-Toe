@@ -37,25 +37,47 @@ function registerListeners(svg) {
                 }
                 svg.children[3].appendChild(img);
                 turn++;
-                if(check() === 1) alert('crosses won');
-                else if(check() === 0) alert('dots won');            
+                if(check() === 1) end('crosses');
+                else if(check() === 0) end('dots')            
             });
         }
     }
 }
 
 function check() {
-    // check all cloumns for wins
-    for (let i = 0; i < grid.length; i++) {
+    // check all cloumns & rows for wins
+    const straits = (() => {
+        for (let i = 0; i < grid.length; i++) {
         sums = [0, 0];
         for(let j = 0; j < 3; j++) {
             sums[0] += grid[i][j];
             sums[1] += grid[j][i];
-            // sums[2] += grid[i][i];
-            // sums[3] += grid[2 - i][i];
         }
         if(sums.includes(3)) return 1;
         else if(sums.includes(0)) return 0;
     }
+
+    
+    })();
+    if(straits === 0 || straits === 1) return straits;
+
+    // check diagonals for wins
+    const diagonals = (() => {
+        let sums = [0, 0];
+        for (let i = 0; i < grid.length; i++) {
+            sums[0] += grid[i][i];
+            sums[1] += grid[2 - i][i];
+        }
+
+        if(sums.includes(3)) return 1;
+        else if(sums.includes(0)) return 0;
+
+    })();
+    if(diagonals === 0 || diagonals === 1) return diagonals;
+
     return undefined;
+}
+
+function end(x) {
+    console.log(`${x} won`);
 }
